@@ -12,7 +12,7 @@
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="BorderBrush"
-                Value="AliceBlue" />
+                Value="White" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type  win:Window2}">
@@ -27,16 +27,20 @@
                                 <!-- Title Bar Area -->
                                 <Grid Background="#BDD5ED">
                                     <!--Label for icon-->
-                                    <Label HorizontalAlignment="Left"
-                                           Width="28" 
-                                           Name="iconLabel"/>
+                                    <Image Source="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
+                                           Height="Auto"
+                                           Margin="0,0,0,0"
+                                           HorizontalAlignment="Left"
+                                           Width="28"
+                                           Name="iconLabel" />
                                     <Label VerticalContentAlignment="Center"
                                            Margin="28,0,105,0"
                                            HorizontalContentAlignment="Center"
                                            Name="label">
                                         <TextBlock Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
                                     </Label>
-                                    <Grid HorizontalAlignment="Right">
+                                    <Grid HorizontalAlignment="Right"
+                                          Height="30">
                                         <!-- System Button Area -->
                                         <Grid.Resources>
                                             <Style TargetType="{x:Type Button}"

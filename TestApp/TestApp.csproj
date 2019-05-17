@@ -100,5 +100,11 @@
       <Name>LibControls</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\MainIcon.tif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\MainIcon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
