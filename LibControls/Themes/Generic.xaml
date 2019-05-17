@@ -17,5 +17,6 @@
     </Style>
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/LibControls;component/themes/Window1.xaml" />
+        <ResourceDictionary Source="/LibControls;component/themes/Window2.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

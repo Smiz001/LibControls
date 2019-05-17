@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace LibControls.Windows
 {
-  public class Window2:Window
+  public class Window2 : Window
   {
     [DllImport("user32.dll")]
     static extern IntPtr SendMessage(IntPtr hWnd, int msg, IntPtr wp, IntPtr lp);
@@ -14,13 +16,59 @@ namespace LibControls.Windows
     [DllImport("user32.dll")]
     static extern int TrackPopupMenu(IntPtr hMenu, uint uFlags, int x, int y, int nReserved, IntPtr hWnd, IntPtr prcRect);
 
+    #region Fields
+
     private Point startPos;
     private System.Windows.Forms.Screen[] screens = System.Windows.Forms.Screen.AllScreens;
+    private Border border;
+    private Border main;
+    private Rectangle rectMax;
+    private Canvas rectMin;
+
+    #endregion
 
     static Window2()
     {
       DefaultStyleKeyProperty.OverrideMetadata(typeof(Window2),
           new FrameworkPropertyMetadata(typeof(Window2)));
+    }
+
+    public override void OnApplyTemplate()
+    {
+      this.LocationChanged += Window_LocationChanged;
+      this.StateChanged += Window_StateChanged;
+
+      Button maximizeButton = GetTemplateChild("maximizeButton") as Button;
+      if (maximizeButton != null)
+      {
+        maximizeButton.Click += Maximize_Click;
+        if (ResizeMode == ResizeMode.NoResize)
+          maximizeButton.Visibility = Visibility.Hidden;
+      }
+
+      Button minimizeButton = GetTemplateChild("minimizeButton") as Button;
+      if (minimizeButton != null)
+      {
+        minimizeButton.Click += Minimize_Click;
+        if (ResizeMode == ResizeMode.NoResize)
+          minimizeButton.Visibility = Visibility.Hidden;
+      }
+
+      Button closeButton = GetTemplateChild("closeButton") as Button;
+      if (closeButton != null)
+        closeButton.Click += Close_Click;
+
+      Label label = GetTemplateChild("label") as Label;
+      if(label!= null)
+      {
+        label.PreviewMouseDown += System_MouseDown;
+        label.PreviewMouseMove += System_MouseMove;
+      }
+
+      border = GetTemplateChild("border") as Border;
+      main = GetTemplateChild("main") as Border;
+      rectMax = GetTemplateChild("rectMax") as Rectangle;
+      rectMin = GetTemplateChild("rectMin") as Canvas;
     }
 
     private void Window_LocationChanged(object sender, EventArgs e)
@@ -87,7 +135,7 @@ namespace LibControls.Windows
       this.Close();
     }
 
-    private void Mimimize_Click(object sender, RoutedEventArgs e)
+    private void Minimize_Click(object sender, RoutedEventArgs e)
     {
       this.WindowState = WindowState.Minimized;
     }

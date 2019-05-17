@@ -1,0 +1,150 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:LibControls.Themes"
+                    xmlns:win="clr-namespace:LibControls.Windows">
+
+    <Style TargetType="{x:Type win:Window2}"
+           x:Name="window2">
+        <Setter Property="WindowStyle"
+                Value="None" />
+        <Setter Property="Background"
+                Value="White" />
+        <Setter Property="BorderThickness"
+                Value="1" />
+        <Setter Property="BorderBrush"
+                Value="AliceBlue" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type  win:Window2}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            Margin="{TemplateBinding Margin}"
+                            Name="main">
+                        <DockPanel>
+                            <Border Name="border"
+                                    DockPanel.Dock="Top"
+                                    Height="25">
+                                <!-- Title Bar Area -->
+                                <Grid Background="#BDD5ED">
+                                    <Label VerticalContentAlignment="Center"
+                                           Margin="28,0,105,0"
+                                           Name="label">
+                                        <!--PreviewMouseDown="System_MouseDown"
+                                           PreviewMouseMove="System_MouseMove">-->
+                                        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+                                    </Label>
+                                    <Grid HorizontalAlignment="Right">
+                                        <!-- System Button Area -->
+                                        <Grid.Resources>
+                                            <Style TargetType="{x:Type Button}"
+                                                   x:Key="systemButton">
+                                                <Setter Property="Padding"
+                                                        Value="0" />
+                                                <Setter Property="Width"
+                                                        Value="35" />
+                                                <Setter Property="Height"
+                                                        Value="25" />
+                                                <Setter Property="HorizontalAlignment"
+                                                        Value="Right" />
+                                                <Setter Property="VerticalAlignment"
+                                                        Value="Top" />
+                                                <Setter Property="Background"
+                                                        Value="Transparent" />
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type Button}">
+                                                            <Border Background="{TemplateBinding Background}"
+                                                                    BorderThickness="0">
+                                                                <ContentPresenter HorizontalAlignment="Center"
+                                                                                  VerticalAlignment="Center" />
+                                                            </Border>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Style.Triggers>
+                                                    <Trigger Property="Button.IsMouseOver"
+                                                             Value="True">
+                                                        <Setter Property="Button.Background"
+                                                                Value="LightGray" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Button  Name="closeButton">
+                                            <Button.Style>
+                                                <Style TargetType="Button"
+                                                       BasedOn="{StaticResource systemButton}">
+                                                    <Style.Triggers>
+                                                        <Trigger Property="Button.IsMouseOver"
+                                                                 Value="True">
+                                                            <Setter Property="Button.Background"
+                                                                    Value="Red" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+
+                                                </Style>
+                                            </Button.Style>
+                                            <Canvas Height="25"
+                                                    Width="35">
+                                                <Line X1="12"
+                                                      Y1="8"
+                                                      X2="22"
+                                                      Y2="18"
+                                                      Stroke="Black"
+                                                      StrokeThickness="0.75" />
+                                                <Line X1="12"
+                                                      Y1="18"
+                                                      X2="22"
+                                                      Y2="8"
+                                                      Stroke="Black"
+                                                      StrokeThickness="0.75" />
+                                            </Canvas>
+                                        </Button>
+                                        <Button Name="maximizeButton"
+                                                Margin="0,0,35,0"
+                                                Style="{DynamicResource systemButton}">
+                                            <Grid>
+                                                <Rectangle Name="rectMax"
+                                                           Width="11"
+                                                           Height="11"
+                                                           Stroke="Black"
+                                                           StrokeThickness="0.75" />
+                                                <Canvas Name="rectMin"
+                                                        Visibility="Hidden">
+                                                    <Polyline Points="2.375,2 2.375,0.375 10.625,0.375 10.625,8.625 9,8.625"
+                                                              StrokeThickness="0.75"
+                                                              Stroke="Black" />
+                                                    <Rectangle Width="9"
+                                                               Height="9"
+                                                               Stroke="Black"
+                                                               StrokeThickness="0.75"
+                                                               Margin="0,2,2,0" />
+                                                </Canvas>
+                                            </Grid>
+                                        </Button>
+                                        <Button Name="minimizeButton"
+                                                Margin="0,0,70,0"
+                                                Style="{DynamicResource systemButton}">
+                                            <Rectangle Width="11"
+                                                       Stroke="Black"
+                                                       StrokeThickness="0.75" />
+
+                                        </Button>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                            <Grid DockPanel.Dock="Bottom"
+                                  Background="{TemplateBinding Background}"
+                                  x:Name="gridContent">
+                                <AdornerDecorator>
+                                    <ContentPresenter />
+                                </AdornerDecorator>
+                            </Grid>
+                        </DockPanel>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -19,7 +19,7 @@ namespace TestApp
   /// <summary>
   /// Interaction logic for MainWindow.xaml
   /// </summary>
-  public partial class MainWindow : Window1
+  public partial class MainWindow : Window2
   {
     public MainWindow()
     {
