@@ -33,13 +33,14 @@
                                     Height="32">
                                 <!-- Title Bar Area -->
                                 <Grid Background="#BDD5ED">
-                                    <!--Label for icon-->
+                                    <!--Icon-->
                                     <Image Source="{Binding Icon, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"
                                            Height="Auto"
                                            Margin="0,0,0,0"
                                            HorizontalAlignment="Left"
                                            Width="32"
                                            Name="iconLabel" />
+                                    <!--Title-->
                                     <Label VerticalContentAlignment="Center"
                                            Margin="28,0,105,0"
                                            HorizontalContentAlignment="Center"
@@ -57,7 +58,7 @@
                                                 <Setter Property="Width"
                                                         Value="35" />
                                                 <Setter Property="Height"
-                                                        Value="25" />
+                                                        Value="{Binding Height, ElementName=border}" />
                                                 <Setter Property="HorizontalAlignment"
                                                         Value="Right" />
                                                 <Setter Property="VerticalAlignment"
