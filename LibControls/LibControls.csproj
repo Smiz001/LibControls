@@ -50,6 +50,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CircularProgressBar.xaml.cs">
+      <DependentUpon>CircularProgressBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DoubleUpDown.cs" />
     <Compile Include="Controls\DoubleUpDownWithNull.cs" />
     <Compile Include="Controls\Events\ValueChangedEventHandler.cs" />
@@ -57,6 +60,10 @@
     <Compile Include="Converters\FontSizeConverter.cs" />
     <Compile Include="Windows\Window1.cs" />
     <Compile Include="Windows\Window2.cs" />
+    <Page Include="Controls\CircularProgressBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\DoubleUpDown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
