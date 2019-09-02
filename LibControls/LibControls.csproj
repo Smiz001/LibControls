@@ -50,8 +50,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DoubleUpDown.cs" />
+    <Compile Include="Controls\DoubleUpDownWithNull.cs" />
+    <Compile Include="Controls\Events\ValueChangedEventHandler.cs" />
+    <Compile Include="Controls\Events\ValueChangedWithNullEventHandler.cs" />
+    <Compile Include="Converters\FontSizeConverter.cs" />
     <Compile Include="Windows\Window1.cs" />
     <Compile Include="Windows\Window2.cs" />
+    <Page Include="Themes\DoubleUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\DoubleUpDownWithNull.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
